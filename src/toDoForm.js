@@ -1,6 +1,6 @@
-const renderProjectForm = () => {
+const renderToDoForm = () => {
   const form = document.createElement('form');
-  form.classList.add('form');
+  form.classList.add('toDoForm');
   const titleLabel = document.createElement('label');
   const title = document.createElement('input');
   const descriptionLabel = document.createElement('label');
@@ -8,15 +8,15 @@ const renderProjectForm = () => {
   description.setAttribute('type', 'textarea');
   const priorityLabel = document.createElement('label');
   const priority = document.createElement('select');
-  const option1 = document.createElement("option"); 
-  option1.setAttribute("value", "Low priority"); 
-  option1.textContent = "Low priority"; 
-  const option2 = document.createElement("option"); 
-  option2.setAttribute("value", "Normal priority"); 
-  option2.textContent = "Normal priority"; 
-  const option3 = document.createElement("option"); 
-  option3.setAttribute("value", "High priority"); 
-  option3.textContent = "High priority"; 
+  const option1 = document.createElement("option");
+  option1.setAttribute("value", "Low priority");
+  option1.textContent = "Low priority";
+  const option2 = document.createElement("option");
+  option2.setAttribute("value", "Normal priority");
+  option2.textContent = "Normal priority";
+  const option3 = document.createElement("option");
+  option3.setAttribute("value", "High priority");
+  option3.textContent = "High priority";
   priority.appendChild(option1);
   priority.appendChild(option2);
   priority.appendChild(option3);
@@ -26,7 +26,7 @@ const renderProjectForm = () => {
   const btn = document.createElement('button');
 
   const elements = [
-    [titleLabel, "Title:"], 
+    [titleLabel, "Title:"],
     [descriptionLabel, "Description"],
     [priorityLabel, "Select Priority: "],
     [dateLabel, "Date: "],
@@ -45,4 +45,4 @@ const renderProjectForm = () => {
   main.appendChild(form);
 }
 
-export { renderProjectForm }
+export { renderToDoForm }
