@@ -31,7 +31,6 @@ const addToDo = () => {
   const projects = getStorage();
   let project = projects.find(p => p.id === projectId);
   project.toDos.push(toDo);
-  console.log(projects);
   setStorage(projects);
 };
 

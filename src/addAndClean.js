@@ -1,6 +1,7 @@
 import { addProject } from "./projectFactory";
 import { addToDo } from "./toDoFactory";
 import { renderProjects } from "./projects";
+import { renderToDos } from "./toDos";
 
 const formCleaner = form => {
   [...form.children].forEach(child => {
@@ -8,19 +9,19 @@ const formCleaner = form => {
   });
 };
 
-const deleteRendered = (data) => {
+const deleteRendered = data => {
   let container;
   let divs;
   if (data === 0) {
-    container = document.getElementById('projects');
+    container = document.getElementById("projects");
     divs = document.querySelectorAll("#projects > div");
   } else {
-    container = document.getElementById('toDos');
+    container = document.getElementById("toDos");
     divs = document.querySelectorAll("#toDos > div");
   }
   [...divs].forEach(div => {
     container.removeChild(div);
-  })
+  });
 };
 
 const addAndClean = e => {
@@ -34,6 +35,8 @@ const addAndClean = e => {
   } else {
     addToDo();
     form = document.querySelector(".toDoForm");
+    deleteRendered(1);
+    renderToDos(form.project.value);
   }
   formCleaner(form);
 };
