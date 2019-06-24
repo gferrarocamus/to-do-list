@@ -1,11 +1,17 @@
-const renderProject = (data) => {
-  const div = document.createElement('div');
-  div.classList.add('project');
-  const title = document.createElement('h2');
-  title.textContent = data;
-  div.appendChild(title);
+import { getStorage } from './storage';
+import './css/project.css';
 
-  return div;
+const renderProjects = () => {
+  const projects = getStorage();
+  const container = document.getElementById('projects');
+  projects.forEach(project => {
+    const div = document.createElement('div');
+    div.classList.add('project');
+    const title = document.createElement('h2');
+    title.textContent = project.name;
+    div.appendChild(title);
+    container.appendChild(div);
+  })
 }
 
-export { renderProject }
+export { renderProjects }

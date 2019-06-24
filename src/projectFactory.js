@@ -1,12 +1,20 @@
-import { getStorage, setStorage } from './storage';
+import { getStorage, setStorage } from "./storage";
+import { toDoFactory } from "./toDoFactory";
 
 const projectFactory = (id, name, toDos) => {
-
-  return { id, name, toDos }
+  return { id, name, toDos };
 };
 
 const setDefaultProject = () => {
-  const defaultProject = projectFactory(1, 'My Project', []);
+  const d = new Date().toDateString();
+  const defaultToDo = toDoFactory(
+    1,
+    "sample task",
+    "give feedback to developer",
+    "low priority",
+    d
+  );
+  const defaultProject = projectFactory(1, "My Project", [defaultToDo]);
   const projects = [defaultProject];
   if (getStorage() === null) {
     setStorage(projects);
@@ -21,9 +29,8 @@ const getId = () => {
   return storage.length + 1;
 };
 
-const addProject = (e) => {
-  e.preventDefault();
-  const form = document.querySelector('.projectForm');
+const addProject = () => {
+  const form = document.querySelector(".projectForm");
 
   const project = projectFactory(getId(), form.title.value, []);
 
@@ -32,4 +39,4 @@ const addProject = (e) => {
   setStorage(projects);
 };
 
-export { addProject, setDefaultProject }
+export { addProject, setDefaultProject };

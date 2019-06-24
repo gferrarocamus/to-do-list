@@ -1,5 +1,5 @@
 import { getStorage } from './storage';
-import { addToDo } from './toDoFactory';
+import { addAndClean } from './addAndClean';
 
 const renderToDoForm = () => {
   const form = document.createElement('form');
@@ -31,7 +31,7 @@ const renderToDoForm = () => {
   date.setAttribute('type', 'date');
   date.setAttribute('name', 'date');
   const btn = document.createElement('button');
-  btn.addEventListener('click', addToDo, false);
+  btn.addEventListener('click', addAndClean, false);
   const projectLabel = document.createElement('label');
   const project =  document.createElement('select');
   project.setAttribute('name', 'project');

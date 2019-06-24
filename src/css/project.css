@@ -1,0 +1,8 @@
+.project {
+  border-bottom: 2px solid black;
+  cursor: pointer;
+}
+
+.project:last-child {
+  border: none;
+}

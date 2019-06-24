@@ -1,3 +1,5 @@
+import { getStorage } from './storage';
+
 const renderToDo = (data) => {
   const div = document.createElement('div');
   div.classList.add('toDo');

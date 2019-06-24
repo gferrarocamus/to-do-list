@@ -1,4 +1,4 @@
-import { addProject } from './projectFactory';
+import { addAndClean } from './addAndClean';
 
 const renderProjectForm = () => {
   const form = document.createElement('form');
@@ -8,7 +8,7 @@ const renderProjectForm = () => {
   name.setAttribute('name', 'title');
   name.setAttribute('type', 'text');
   const btn = document.createElement('button');
-  btn.addEventListener('click', addProject, false);
+  btn.addEventListener('click', addAndClean, false);
 
   nameLabel.textContent = "Project Name: ";
   btn.textContent = "Add Project";
