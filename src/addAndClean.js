@@ -1,44 +1,46 @@
-import { addProject } from "./projectFactory";
-import { addToDo } from "./toDoFactory";
-import { renderProjects } from "./projects";
-import { renderToDos } from "./toDos";
+import { addProject } from './projectFactory';
+import { addToDo } from './toDoFactory';
+import { renderProjects } from './projects';
+import { renderToDos } from './toDos';
+import { renderToDoForm } from './toDoForm';
 
-const formCleaner = form => {
-  [...form.children].forEach(child => {
-    child.value = "";
+const formCleaner = (form) => {
+  [...form.children].forEach((child) => {
+    if (child.type === 'text') child.value = '';
   });
 };
 
-const deleteRendered = data => {
-  let container;
-  let divs;
-  if (data === 0) {
-    container = document.getElementById("projects");
-    divs = document.querySelectorAll("#projects > div");
-  } else {
-    container = document.getElementById("toDos");
-    divs = document.querySelectorAll("#toDos > div");
-  }
-  [...divs].forEach(div => {
+const deleteRendered = (parent, children) => {
+  const container = document.getElementById(parent);
+  let divs = document.querySelectorAll(children);
+  [...divs].forEach((div) => {
     container.removeChild(div);
   });
 };
 
-const addAndClean = e => {
+const addAndClean = (e) => {
   e.preventDefault();
-  let form;
-  if (e.target.textContent === "Add Project") {
+  if (e.target.getAttribute('id') === 'projectBtn') {
     addProject();
-    form = document.querySelector(".projectForm");
-    deleteRendered(0);
+    formCleaner(document.querySelector('.projectForm'));
+    deleteRendered('projects', '#projects > div');
     renderProjects();
-  } else {
+    deleteRendered('toDos', '#toDos > form');
+    renderToDoForm();
+  } else if (e.target.getAttribute('id') === 'toDoBtn') {
     addToDo();
-    form = document.querySelector(".toDoForm");
-    deleteRendered(1);
-    renderToDos(form.project.value);
+    const form = document.querySelector('.toDoForm');
+    const id = +form.project.value;
+    formCleaner(form);
+    deleteRendered('toDos', '#toDos > div');
+    renderToDos(id);
   }
-  formCleaner(form);
 };
 
-export { addAndClean };
+const cleanAndRender = (e) => {
+  const projectId = e.target.getAttribute('data-index');
+  deleteRendered('toDos', '#toDos > div');
+  renderToDos(+projectId);
+};
+
+export { addAndClean, cleanAndRender };

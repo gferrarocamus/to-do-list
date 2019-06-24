@@ -31,6 +31,7 @@ const renderToDoForm = () => {
   date.setAttribute('type', 'date');
   date.setAttribute('name', 'date');
   const btn = document.createElement('button');
+  btn.setAttribute('id', 'toDoBtn');
   btn.addEventListener('click', addAndClean, false);
   const projectLabel = document.createElement('label');
   const project =  document.createElement('select');

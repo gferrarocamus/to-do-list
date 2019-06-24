@@ -8,6 +8,7 @@ const renderProjectForm = () => {
   name.setAttribute('name', 'title');
   name.setAttribute('type', 'text');
   const btn = document.createElement('button');
+  btn.setAttribute('id', 'projectBtn');
   btn.addEventListener('click', addAndClean, false);
 
   nameLabel.textContent = "Project Name: ";

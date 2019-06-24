@@ -1,5 +1,5 @@
 import { getStorage } from './storage';
-import { renderOnClick } from './toDos';
+import { cleanAndRender } from './addAndClean';
 import './css/project.css';
 
 const renderProjects = () => {
@@ -8,7 +8,7 @@ const renderProjects = () => {
   projects.forEach(project => {
     const div = document.createElement('div');
     div.classList.add('project');
-    div.addEventListener('click', renderOnClick, false);
+    div.addEventListener('click', cleanAndRender, false);
     const title = document.createElement('h2');
     title.textContent = project.name;
     title.setAttribute('data-index', project.id);
