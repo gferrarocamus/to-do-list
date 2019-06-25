@@ -18,14 +18,29 @@ const deleteRendered = (parent, children) => {
   });
 };
 
+const showProjectForm = (e) => {
+  e.target.classList.remove('visible');
+  const form = document.querySelector('.projectForm');
+  form.classList.add('visible');
+}
+
+const hideProjectForm = () => {
+  const btnAdd = document.getElementById('addProjectBtn');
+  btnAdd.classList.add('visible');
+  const form = document.querySelector('.projectForm');
+  form.classList.remove('visible');
+}
+
 const addAndClean = (e) => {
   e.preventDefault();
   if (e.target.getAttribute('id') === 'projectBtn') {
     addProject();
     formCleaner(document.querySelector('.projectForm'));
     deleteRendered('projects', '#projects > div');
+    deleteRendered('projects', '#projects > button');
     renderProjects();
-    deleteRendered('toDos', '#toDos > form');
+    hideProjectForm()
+    deleteRendered('toDosForm', '#toDosForm > form');
     renderToDoForm();
   } else if (e.target.getAttribute('id') === 'toDoBtn') {
     addToDo();
@@ -43,4 +58,8 @@ const cleanAndRender = (e) => {
   renderToDos(+projectId);
 };
 
-export { addAndClean, cleanAndRender };
+const showDetails = () => {
+
+}
+
+export { addAndClean, cleanAndRender, showProjectForm, showDetails };

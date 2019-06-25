@@ -1,4 +1,6 @@
 import { getStorage } from './storage';
+import { showDetails } from './addAndClean'
+import './css/toDos.css';
 
 const renderToDos = (projectId) => {
   const projects = getStorage();
@@ -13,8 +15,11 @@ const createToDo = (data) => {
   const div = document.createElement('div');
   div.classList.add('toDo');
   const title = document.createElement('h3');
+  title.addEventListener('click', showDetails, false);
   const description = document.createElement('p');
+  description.classList.add('hidden');
   const priority = document.createElement('p');
+  priority.classList.add('hidden');
   const date = document.createElement('p');
   title.textContent = data.title;
   description.textContent = data.description;

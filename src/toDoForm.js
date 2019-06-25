@@ -61,7 +61,7 @@ const renderToDoForm = () => {
     form.appendChild(element);
   });
 
-  const main = document.getElementById('toDos');
+  const main = document.getElementById('toDosForm');
   main.appendChild(form);
 }
 

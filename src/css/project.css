@@ -6,3 +6,12 @@
 .project:last-child {
   border: none;
 }
+
+.projectForm,
+.addProjectBtn {
+  display: none;
+}
+
+.visible {
+  display: block;
+}

@@ -8,5 +8,5 @@ import './css/styles.css';
 
 setDefaultProject();
 renderProjectForm();
-renderToDoForm();
 renderProjects();
+renderToDoForm();

@@ -17,7 +17,7 @@ const renderProjectForm = () => {
     form.appendChild(element);
   });
 
-  const main = document.getElementById('projects');
+  const main = document.getElementById('projectsForm');
   main.appendChild(form);
 }
 

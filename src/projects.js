@@ -1,5 +1,5 @@
 import { getStorage } from './storage';
-import { cleanAndRender } from './addAndClean';
+import { cleanAndRender, showProjectForm } from './addAndClean';
 import './css/project.css';
 
 const renderProjects = () => {
@@ -15,6 +15,14 @@ const renderProjects = () => {
     div.appendChild(title);
     container.appendChild(div);
   })
+
+  const btnAdd = document.createElement('button');
+  btnAdd.textContent = "+";
+  btnAdd.classList.add('addProjectBtn');
+  btnAdd.classList.add('visible');
+  btnAdd.setAttribute('id', 'addProjectBtn');
+  btnAdd.addEventListener('click', showProjectForm, false);
+  container.appendChild(btnAdd);
 }
 
 export { renderProjects }
