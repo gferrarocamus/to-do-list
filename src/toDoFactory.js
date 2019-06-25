@@ -43,6 +43,21 @@ const findToDo = (id) => {
   return found;
 };
 
+const updateStorage = (id, form) => {
+  const storage = getStorage();
+  storage.forEach((project) => {
+    project.toDos.forEach((toDo) => {
+      if (toDo.id === +id) {
+        toDo.title = form.title.value;
+        toDo.description = form.description.value;
+        toDo.priority = form.priority.value;
+        toDo.date = form.date.value;
+      }
+    });
+  });
+  setStorage(storage);
+};
+
 const addToDo = () => {
   const form = document.querySelector('.toDoForm');
 
@@ -61,4 +76,4 @@ const addToDo = () => {
   setStorage(projects);
 };
 
-export { addToDo, toDoFactory, toggleChecked, findToDo };
+export { addToDo, toDoFactory, toggleChecked, findToDo, updateStorage };

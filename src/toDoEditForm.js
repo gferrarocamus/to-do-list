@@ -1,4 +1,5 @@
 import { saveChanges } from './addAndClean';
+import './css/toDoEditForm.css';
 
 const renderToDoEditForm = (toDo, main) => {
   const form = document.createElement('form');
@@ -41,7 +42,7 @@ const renderToDoEditForm = (toDo, main) => {
     [descriptionLabel, "Description: "],
     [priorityLabel, "Priority: "],
     [dateLabel, "Date: "],
-    [btn, "Edit"],
+    [btn, "Save"],
   ];
   elements.forEach((element) => {
     element[0].textContent = element[1];

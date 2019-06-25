@@ -8,11 +8,11 @@ const renderToDos = (projectId) => {
   const project = projects.find((p) => p.id === projectId);
   const toDoContainer = document.getElementById('toDos');
   project.toDos.forEach((toDo) => {
-    toDoContainer.appendChild(createToDo(toDo));
+    toDoContainer.appendChild(createToDo(toDo, projectId));
   });
 };
 
-const createToDo = (data) => {
+const createToDo = (data, projectId) => {
   const div = document.createElement('div');
   div.classList.add('toDo');
   const title = document.createElement('h3');
@@ -53,6 +53,7 @@ const createToDo = (data) => {
   });
 
   div.setAttribute('data-index', data.id);
+  div.setAttribute('project-index', projectId);
   div.addEventListener('click', showDetailsFromDiv, false);
 
   return div;

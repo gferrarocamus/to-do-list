@@ -1,4 +1,4 @@
-import { renderToDo } from './toDos';
+import { renderToDos } from './toDos';
 import { renderProjectForm } from './projectForm';
 import { renderToDoForm } from './toDoForm';
 import { setDefaultProject } from './projectFactory';
@@ -10,3 +10,4 @@ setDefaultProject();
 renderProjectForm();
 renderProjects();
 renderToDoForm();
+renderToDos(1);
