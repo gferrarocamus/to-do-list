@@ -10,6 +10,7 @@ const setDefaultProject = () => {
   const defaultToDo = toDoFactory(
     1,
     "sample task",
+    false,
     "give feedback to developer",
     "low priority",
     d

@@ -1,5 +1,6 @@
 import { getStorage } from './storage';
 import { addAndClean } from './addAndClean';
+import './css/toDoForm.css';
 
 const renderToDoForm = () => {
   const form = document.createElement('form');
@@ -45,8 +46,8 @@ const renderToDoForm = () => {
   })
 
   const elements = [
-    [titleLabel, "Title:"],
-    [descriptionLabel, "Description"],
+    [titleLabel, "Title: "],
+    [descriptionLabel, "Description: "],
     [priorityLabel, "Select Priority: "],
     [dateLabel, "Date: "],
     [btn, "Add To-Do Item"],

@@ -1,7 +1,7 @@
 import { getStorage, setStorage } from "./storage";
 
-const toDoFactory = (id, title, description, priority, date) => {
-  return { id, title, description, priority, date };
+const toDoFactory = (id, title, check, description, priority, date) => {
+  return { id, title, check, description, priority, date };
 };
 
 const getToDoId = () => {
@@ -17,12 +17,27 @@ const getToDoId = () => {
   }
 };
 
+const toggleChecked = (e) => {
+  const id = e.target.parentNode.getAttribute('data-index');
+  const storage = getStorage();
+  storage.forEach(project => {
+    project.toDos.forEach(toDo => {
+      if (toDo.id === +id) {
+        toDo.check = toDo.check === false ? true : false;
+      }
+    })
+  })
+  setStorage(storage);
+};
+
+
 const addToDo = () => {
   const form = document.querySelector(".toDoForm");
 
   const toDo = toDoFactory(
     getToDoId(),
     form.title.value,
+    false,
     form.description.value,
     form.priority.value,
     form.date.value
@@ -34,4 +49,4 @@ const addToDo = () => {
   setStorage(projects);
 };
 
-export { addToDo, toDoFactory };
+export { addToDo, toDoFactory, toggleChecked };

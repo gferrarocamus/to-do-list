@@ -1,3 +1,13 @@
 .hidden {
   display: none;
 }
+
+.inline {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.toDo {
+  border: 1px solid black;
+  padding: 20px;
+}

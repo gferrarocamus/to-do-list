@@ -58,8 +58,14 @@ const cleanAndRender = (e) => {
   renderToDos(+projectId);
 };
 
-const showDetails = () => {
+const showDetails = (e) => {
+  const details = e.target.children;
 
-}
+  [...details].forEach(detail => {
+    if ([...detail.classList].indexOf('details') > -1) {
+      detail.classList.toggle('hidden');
+    }
+  })
+};
 
 export { addAndClean, cleanAndRender, showProjectForm, showDetails };
