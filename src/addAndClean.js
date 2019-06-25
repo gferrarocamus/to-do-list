@@ -1,8 +1,9 @@
 import { addProject } from './projectFactory';
-import { addToDo } from './toDoFactory';
+import { addToDo, findToDo } from './toDoFactory';
 import { renderProjects } from './projects';
 import { renderToDos } from './toDos';
 import { renderToDoForm } from './toDoForm';
+import { renderToDoEditForm } from './toDoEditForm';
 
 const formCleaner = (form) => {
   [...form.children].forEach((child) => {
@@ -22,14 +23,14 @@ const showProjectForm = (e) => {
   e.target.classList.remove('visible');
   const form = document.querySelector('.projectForm');
   form.classList.add('visible');
-}
+};
 
 const hideProjectForm = () => {
   const btnAdd = document.getElementById('addProjectBtn');
   btnAdd.classList.add('visible');
   const form = document.querySelector('.projectForm');
   form.classList.remove('visible');
-}
+};
 
 const addAndClean = (e) => {
   e.preventDefault();
@@ -39,7 +40,7 @@ const addAndClean = (e) => {
     deleteRendered('projects', '#projects > div');
     deleteRendered('projects', '#projects > button');
     renderProjects();
-    hideProjectForm()
+    hideProjectForm();
     deleteRendered('toDosForm', '#toDosForm > form');
     renderToDoForm();
   } else if (e.target.getAttribute('id') === 'toDoBtn') {
@@ -58,14 +59,35 @@ const cleanAndRender = (e) => {
   renderToDos(+projectId);
 };
 
-const showDetails = (e) => {
-  const details = e.target.children;
-
-  [...details].forEach(detail => {
+const showDetails = (details) => {
+  [...details].forEach((detail) => {
     if ([...detail.classList].indexOf('details') > -1) {
       detail.classList.toggle('hidden');
     }
-  })
+  });
 };
 
-export { addAndClean, cleanAndRender, showProjectForm, showDetails };
+const showDetailsFromTitle = (e) => {
+  const details = e.target.parentNode.children;
+  showDetails(details);
+};
+
+const showDetailsFromDiv = (e) => {
+  const details = e.target.children;
+  showDetails(details);
+};
+
+const editToDo = (e) => {
+  const parent = e.target.parentNode;
+  const children =  e.target.parentNode.children;
+  [...children].forEach((child) => {
+    parent.removeChild(child);
+  });
+  const toDo = findToDo(parent.getAttribute('data-index'));
+  renderToDoEditForm(toDo, parent);
+};
+
+const saveChanges = (e) => {};
+const removeToDo = (e) => {};
+
+export { addAndClean, cleanAndRender, showProjectForm, showDetailsFromTitle, showDetailsFromDiv, editToDo, saveChanges, removeToDo };

@@ -1,16 +1,16 @@
-import { getStorage } from './storage';
-import { addAndClean } from './addAndClean';
-import './css/toDoForm.css';
+import { saveChanges } from './addAndClean';
 
-const renderToDoForm = () => {
+const renderToDoEditForm = (toDo, main) => {
   const form = document.createElement('form');
-  form.classList.add('toDoForm');
+  form.classList.add('toDoEditForm');
   const titleLabel = document.createElement('label');
   const title = document.createElement('input');
   title.setAttribute('name', 'title');
+  title.value = toDo.title;
   const descriptionLabel = document.createElement('label');
   const description = document.createElement('input');
   description.setAttribute('name', 'description');
+  description.value = toDo.description;
   const priorityLabel = document.createElement('label');
   const priority = document.createElement('select');
   priority.setAttribute('name', 'priority');
@@ -26,43 +26,33 @@ const renderToDoForm = () => {
   priority.appendChild(option1);
   priority.appendChild(option2);
   priority.appendChild(option3);
+  priority.value = toDo.priority;
   const dateLabel = document.createElement('label');
   const date =  document.createElement('input');
   date.setAttribute('type', 'date');
   date.setAttribute('name', 'date');
+  date.value = toDo.date;
   const btn = document.createElement('button');
-  btn.setAttribute('id', 'toDoBtn');
-  btn.addEventListener('click', addAndClean, false);
-  const projectLabel = document.createElement('label');
-  const project =  document.createElement('select');
-  project.setAttribute('name', 'project');
-  const projects = getStorage();
-  projects.forEach((p) => {
-    let o = document.createElement("option");
-    o.setAttribute("value", p.id);
-    o.textContent = p.name;
-    project.appendChild(o);
-  })
+  btn.setAttribute('id', 'saveBtn');
+  btn.addEventListener('click', saveChanges, false);
 
   const elements = [
     [titleLabel, "Title: "],
     [descriptionLabel, "Description: "],
-    [priorityLabel, "Select Priority: "],
+    [priorityLabel, "Priority: "],
     [dateLabel, "Date: "],
-    [btn, "Add To-Do Item"],
-    [projectLabel, "Select Project: "]
+    [btn, "Edit"],
   ];
   elements.forEach((element) => {
     element[0].textContent = element[1];
   });
 
-  const all = [titleLabel, title, descriptionLabel, description, priorityLabel, priority, dateLabel, date, projectLabel, project, btn ];
+  const all = [titleLabel, title, descriptionLabel, description, priorityLabel, priority, dateLabel, date, btn ];
   all.forEach((element) => {
     form.appendChild(element);
   });
 
-  const main = document.getElementById('toDosForm');
   main.appendChild(form);
 }
 
-export { renderToDoForm }
+export { renderToDoEditForm }

@@ -6,14 +6,13 @@ const projectFactory = (id, name, toDos) => {
 };
 
 const setDefaultProject = () => {
-  const d = new Date().toDateString();
   const defaultToDo = toDoFactory(
     1,
-    "sample task",
+    "Sample task",
     false,
-    "give feedback to developer",
-    "low priority",
-    d
+    "Give feedback to developer",
+    "Low priority",
+    "2019-12-01"
   );
   const defaultProject = projectFactory(1, "My Project", [defaultToDo]);
   const projects = [defaultProject];

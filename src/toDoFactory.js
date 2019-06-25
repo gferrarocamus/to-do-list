@@ -1,4 +1,4 @@
-import { getStorage, setStorage } from "./storage";
+import { getStorage, setStorage } from './storage';
 
 const toDoFactory = (id, title, check, description, priority, date) => {
   return { id, title, check, description, priority, date };
@@ -10,7 +10,7 @@ const getToDoId = () => {
     return 1;
   } else {
     let count = 1;
-    storage.forEach(project => {
+    storage.forEach((project) => {
       count += project.toDos.length;
     });
     return count;
@@ -20,19 +20,31 @@ const getToDoId = () => {
 const toggleChecked = (e) => {
   const id = e.target.parentNode.getAttribute('data-index');
   const storage = getStorage();
-  storage.forEach(project => {
-    project.toDos.forEach(toDo => {
+  storage.forEach((project) => {
+    project.toDos.forEach((toDo) => {
       if (toDo.id === +id) {
         toDo.check = toDo.check === false ? true : false;
       }
-    })
-  })
+    });
+  });
   setStorage(storage);
 };
 
+const findToDo = (id) => {
+  const storage = getStorage();
+  let found;
+  storage.forEach((project) => {
+    project.toDos.forEach((toDo) => {
+      if (toDo.id === +id) {
+        found = toDo;
+      }
+    });
+  });
+  return found;
+};
 
 const addToDo = () => {
-  const form = document.querySelector(".toDoForm");
+  const form = document.querySelector('.toDoForm');
 
   const toDo = toDoFactory(
     getToDoId(),
@@ -44,9 +56,9 @@ const addToDo = () => {
   );
   const projectId = +form.project.value;
   const projects = getStorage();
-  let project = projects.find(p => p.id === projectId);
+  let project = projects.find((p) => p.id === projectId);
   project.toDos.push(toDo);
   setStorage(projects);
 };
 
-export { addToDo, toDoFactory, toggleChecked };
+export { addToDo, toDoFactory, toggleChecked, findToDo };
