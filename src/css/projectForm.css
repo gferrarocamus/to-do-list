@@ -1,0 +1,12 @@
+.projectForm {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.projectForm label {
+  margin-right: 10px;
+}
+
+.projectForm input {
+  margin-right: 15px;
+}

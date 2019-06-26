@@ -34,7 +34,7 @@ const hideProjectForm = () => {
 
 const addAndClean = (e) => {
   e.preventDefault();
-  if (e.target.getAttribute("id") === "projectBtn") {
+  if ([...e.target.classList].includes("projectForm")) {
     addProject();
     formCleaner(document.querySelector(".projectForm"));
     deleteRendered("projects", "#projects > div");
@@ -43,15 +43,13 @@ const addAndClean = (e) => {
     hideProjectForm();
     deleteRendered("toDosForm", "#toDosForm > form");
     renderToDoForm();
-  } else if (e.target.getAttribute("id") === "toDoBtn") {
+  } else if ([...e.target.classList].includes("toDoForm")) {
     addToDo();
     const form = document.querySelector(".toDoForm");
     const id = +form.project.value;
     formCleaner(form);
     deleteRendered("toDos", "#toDos > div");
     renderToDos(id);
-  } else {
-    console.log("here");
   }
 };
 
@@ -60,11 +58,11 @@ const cleanAndRender = (e) => {
   if (!project) return;
   const projects = document.getElementsByClassName('project');
   const projectId = project.getAttribute("data-index");
-  console.log(project);
-  console.log(projectId);
+
   [...projects].forEach((p) => {
     if (p !== project) p.classList.remove('active');
   });
+  
   project.classList.add('active');
   deleteRendered("toDos", "#toDos > div");
   renderToDos(+projectId);
@@ -100,7 +98,7 @@ const editToDo = (e) => {
 
 const saveChanges = (e) => {
   e.preventDefault();
-  const parent = e.target.parentNode.parentNode;
+  const parent = e.target.parentNode;
   const form = document.querySelector(".toDoEditForm");
   const id = parent.getAttribute("data-index");
   updateStorage(id, form);

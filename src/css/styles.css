@@ -1,9 +1,14 @@
 #container {
   display: flex;
+  box-sizing: border-box;
 }
 
 #left {
   width: 25%;
   min-width: 181px;
   margin-right: 15px;
+}
+
+#right {
+  width: 75%;
 }

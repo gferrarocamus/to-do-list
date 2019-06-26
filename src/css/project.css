@@ -25,9 +25,8 @@
 }
 
 #addProjectBtn {
-  width: 50px;
-  font-size: 48px;
-  padding: 0;
+  font-size: 24px;
+  padding: 5px 10px;
   margin-top: 15px;
 }
 

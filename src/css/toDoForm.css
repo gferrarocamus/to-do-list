@@ -1,4 +1,19 @@
 .toDoForm {
-  /* display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.toDoForm > div {
+  display: flex;
+}
+
+.toDoForm > div:first-child {
+  margin-bottom: 15px;
+}
+
+.toDoForm > div input,
+.toDoForm > div select {
+  margin-left: 10px;
+  margin-right: 20px;
 }

@@ -1,4 +1,5 @@
 import { addAndClean } from './renderings';
+import './css/projectForm.css';
 
 const renderProjectForm = () => {
   const form = document.createElement('form');
@@ -11,7 +12,6 @@ const renderProjectForm = () => {
   const btn = document.createElement('button');
   btn.setAttribute('id', 'projectBtn');
   btn.setAttribute('type', 'submit');
-  //btn.addEventListener('click', addAndClean, false);
 
   nameLabel.textContent = "Project Name: ";
   btn.textContent = "Add Project";

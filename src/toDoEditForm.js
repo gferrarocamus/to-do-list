@@ -8,10 +8,12 @@ const renderToDoEditForm = (toDo, main) => {
   const title = document.createElement('input');
   title.setAttribute('name', 'title');
   title.value = toDo.title;
+  title.required = true;
   const descriptionLabel = document.createElement('label');
   const description = document.createElement('input');
   description.setAttribute('name', 'description');
   description.value = toDo.description;
+  description.required = true;
   const priorityLabel = document.createElement('label');
   const priority = document.createElement('select');
   priority.setAttribute('name', 'priority');
@@ -32,10 +34,10 @@ const renderToDoEditForm = (toDo, main) => {
   const date =  document.createElement('input');
   date.setAttribute('type', 'date');
   date.setAttribute('name', 'date');
+  date.required = true;
   date.value = toDo.date;
   const btn = document.createElement('button');
   btn.setAttribute('id', 'saveBtn');
-  btn.addEventListener('click', saveChanges, false);
 
   const elements = [
     [titleLabel, "Title: "],
@@ -53,6 +55,7 @@ const renderToDoEditForm = (toDo, main) => {
     form.appendChild(element);
   });
 
+  form.addEventListener('submit', saveChanges);
   main.appendChild(form);
 }
 
