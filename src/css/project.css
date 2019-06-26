@@ -1,7 +1,14 @@
 .project {
-  border-bottom: 2px solid black;
-  margin-bottom: 20px;
+  border-bottom: 1px solid #DDDDDD;
   cursor: pointer;
+  padding: 15px 0;
+  position: relative;
+}
+
+.project h2 {
+  margin: 0;
+  position: relative;
+  display: inline-block;
 }
 
 .project:last-child {
@@ -21,4 +28,9 @@
   width: 50px;
   font-size: 48px;
   padding: 0;
+  margin-top: 15px;
+}
+
+.active {
+  background-color: #F1F3F4;
 }

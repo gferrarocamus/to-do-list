@@ -1,5 +1,5 @@
 import { getStorage } from './storage';
-import { addAndClean } from './addAndClean';
+import { addAndClean } from './renderings';
 import './css/toDoForm.css';
 
 const renderToDoForm = () => {

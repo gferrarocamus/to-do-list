@@ -1,5 +1,5 @@
 import { getStorage } from './storage';
-import { cleanAndRender, showProjectForm } from './addAndClean';
+import { cleanAndRender, showProjectForm } from './renderings';
 import './css/project.css';
 
 const renderProjects = () => {
@@ -8,10 +8,10 @@ const renderProjects = () => {
   projects.forEach(project => {
     const div = document.createElement('div');
     div.classList.add('project');
-    div.addEventListener('click', cleanAndRender, false);
+    div.setAttribute('data-index', project.id);
+    div.addEventListener('click', cleanAndRender, {capture: true});
     const title = document.createElement('h2');
     title.textContent = project.name;
-    title.setAttribute('data-index', project.id);
     div.appendChild(title);
     container.appendChild(div);
   })

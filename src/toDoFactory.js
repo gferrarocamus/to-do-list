@@ -58,6 +58,14 @@ const updateStorage = (id, form) => {
   setStorage(storage);
 };
 
+const deleteFromStorage = (id) => {
+  const storage = getStorage();
+  storage.forEach((project) => {
+    project.toDos = project.toDos.filter((toDo) => toDo.id !== id);
+  });
+  setStorage(storage);
+}
+
 const addToDo = () => {
   const form = document.querySelector('.toDoForm');
 
@@ -76,4 +84,4 @@ const addToDo = () => {
   setStorage(projects);
 };
 
-export { addToDo, toDoFactory, toggleChecked, findToDo, updateStorage };
+export { addToDo, toDoFactory, toggleChecked, findToDo, updateStorage, deleteFromStorage };

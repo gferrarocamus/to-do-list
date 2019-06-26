@@ -1,5 +1,5 @@
 import { addProject } from "./projectFactory";
-import { addToDo, findToDo, updateStorage } from "./toDoFactory";
+import { addToDo, findToDo, updateStorage, deleteFromStorage } from "./toDoFactory";
 import { renderProjects } from "./projects";
 import { renderToDos } from "./toDos";
 import { renderToDoForm } from "./toDoForm";
@@ -50,11 +50,22 @@ const addAndClean = (e) => {
     formCleaner(form);
     deleteRendered("toDos", "#toDos > div");
     renderToDos(id);
+  } else {
+    console.log("here");
   }
 };
 
 const cleanAndRender = (e) => {
-  const projectId = e.target.getAttribute("data-index");
+  const project = e.target.closest('div');
+  if (!project) return;
+  const projects = document.getElementsByClassName('project');
+  const projectId = project.getAttribute("data-index");
+  console.log(project);
+  console.log(projectId);
+  [...projects].forEach((p) => {
+    if (p !== project) p.classList.remove('active');
+  });
+  project.classList.add('active');
   deleteRendered("toDos", "#toDos > div");
   renderToDos(+projectId);
 };
@@ -98,7 +109,16 @@ const saveChanges = (e) => {
   renderToDos(+index);
 };
 
-const removeToDo = e => {};
+const removeToDo = (e) => {
+  if (confirm("Are you sure you want to delete this item?")) {
+    const parent = e.target.parentNode;
+    const id = parent.getAttribute("data-index");
+    deleteFromStorage(+id);
+    const index = parent.getAttribute("project-index");
+    deleteRendered("toDos", "#toDos > div");
+    renderToDos(+index);
+  }
+};
 
 export {
   addAndClean,

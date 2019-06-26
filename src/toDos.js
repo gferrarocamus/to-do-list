@@ -1,5 +1,5 @@
 import { getStorage } from './storage';
-import { showDetailsFromDiv, showDetailsFromTitle, editToDo, removeToDo } from './addAndClean';
+import { showDetailsFromDiv, showDetailsFromTitle, editToDo, removeToDo } from './renderings';
 import { toggleChecked } from './toDoFactory';
 import './css/toDos.css';
 
@@ -35,10 +35,12 @@ const createToDo = (data, projectId) => {
   const edit = document.createElement('button');
   edit.textContent = "Edit";
   edit.addEventListener('click', editToDo, false);
+  edit.setAttribute('id', 'editBtn');
   const remove = document.createElement('button');
   remove.textContent = "Delete";
   remove.addEventListener('click', removeToDo, false);
-
+  remove.setAttribute('id', 'removeBtn');
+  
   const details = [description, priority, edit, remove];
 
   details.forEach((detail) => {
