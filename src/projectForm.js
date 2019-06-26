@@ -13,8 +13,8 @@ const renderProjectForm = () => {
   btn.setAttribute('id', 'projectBtn');
   btn.setAttribute('type', 'submit');
 
-  nameLabel.textContent = "Project Name: ";
-  btn.textContent = "Add Project";
+  nameLabel.textContent = 'Project Name: ';
+  btn.textContent = 'Add Project';
   [nameLabel, name, btn].forEach((element) => {
     form.appendChild(element);
   });
@@ -22,6 +22,6 @@ const renderProjectForm = () => {
   form.addEventListener('submit', addAndClean);
   const main = document.getElementById('projectsForm');
   main.appendChild(form);
-}
+};
 
-export { renderProjectForm }
+export { renderProjectForm };

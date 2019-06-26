@@ -33,14 +33,14 @@ const createToDo = (data, projectId) => {
   date.textContent = data.date;
   date.classList.add('inline');
   const edit = document.createElement('button');
-  edit.textContent = "Edit";
+  edit.textContent = 'Edit';
   edit.addEventListener('click', editToDo, false);
   edit.setAttribute('id', 'editBtn');
   const remove = document.createElement('button');
-  remove.textContent = "Delete";
+  remove.textContent = 'Delete';
   remove.addEventListener('click', removeToDo, false);
   remove.setAttribute('id', 'removeBtn');
-  
+
   const details = [description, priority, edit, remove];
 
   details.forEach((detail) => {

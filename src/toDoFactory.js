@@ -64,7 +64,7 @@ const deleteFromStorage = (id) => {
     project.toDos = project.toDos.filter((toDo) => toDo.id !== id);
   });
   setStorage(storage);
-}
+};
 
 const addToDo = () => {
   const form = document.querySelector('.toDoForm');
