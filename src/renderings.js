@@ -55,7 +55,9 @@ const addAndClean = (e) => {
     addToDo();
     const form = document.querySelector('.toDoForm');
     const id = +form.project.value;
-    formCleaner(form);
+    [...form.children].forEach((subForm) => {
+      formCleaner(subForm);
+    });
     deleteRendered('toDos', '#toDos > div');
     renderToDos(id);
   }
