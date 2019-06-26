@@ -1,7 +1,14 @@
 import { getStorage, setStorage } from './storage';
 
 const toDoFactory = (id, title, check, description, priority, date) => {
-  return { id, title, check, description, priority, date };
+  return { 
+    id, 
+    title, 
+    check, 
+    description, 
+    priority, 
+    date 
+  };
 };
 
 const getToDoId = () => {
@@ -23,7 +30,7 @@ const toggleChecked = (e) => {
   storage.forEach((project) => {
     project.toDos.forEach((toDo) => {
       if (toDo.id === +id) {
-        toDo.check = toDo.check === false ? true : false;
+        toDo.check = !toDo.check;
       }
     });
   });
@@ -61,7 +68,7 @@ const updateStorage = (id, form) => {
 const deleteFromStorage = (id) => {
   const storage = getStorage();
   storage.forEach((project) => {
-    project.toDos = project.toDos.filter((toDo) => toDo.id !== id);
+    project.toDos = project.toDos.filter(toDo => toDo.id !== id);
   });
   setStorage(storage);
 };
@@ -75,13 +82,20 @@ const addToDo = () => {
     false,
     form.description.value,
     form.priority.value,
-    form.date.value
+    form.date.value,
   );
   const projectId = +form.project.value;
   const projects = getStorage();
-  let project = projects.find((p) => p.id === projectId);
+  const project = projects.find((p) => p.id === projectId);
   project.toDos.push(toDo);
   setStorage(projects);
 };
 
-export { addToDo, toDoFactory, toggleChecked, findToDo, updateStorage, deleteFromStorage };
+export { 
+  addToDo, 
+  toDoFactory, 
+  toggleChecked, 
+  findToDo, 
+  updateStorage, 
+  deleteFromStorage 
+};

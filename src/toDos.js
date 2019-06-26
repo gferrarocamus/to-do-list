@@ -1,16 +1,12 @@
 import { getStorage } from './storage';
-import { showDetailsFromDiv, showDetailsFromTitle, editToDo, removeToDo } from './renderings';
+import { 
+  showDetailsFromDiv, 
+  showDetailsFromTitle, 
+  editToDo, 
+  removeToDo 
+} from './renderings';
 import { toggleChecked } from './toDoFactory';
 import './css/toDos.css';
-
-const renderToDos = (projectId) => {
-  const projects = getStorage();
-  const project = projects.find((p) => p.id === projectId);
-  const toDoContainer = document.getElementById('toDos');
-  project.toDos.forEach((toDo) => {
-    toDoContainer.appendChild(createToDo(toDo, projectId));
-  });
-};
 
 const createToDo = (data, projectId) => {
   const div = document.createElement('div');
@@ -59,6 +55,15 @@ const createToDo = (data, projectId) => {
   div.addEventListener('click', showDetailsFromDiv, false);
 
   return div;
+};
+
+const renderToDos = (projectId) => {
+  const projects = getStorage();
+  const project = projects.find(p => p.id === projectId);
+  const toDoContainer = document.getElementById('toDos');
+  project.toDos.forEach((toDo) => {
+    toDoContainer.appendChild(createToDo(toDo, projectId));
+  });
 };
 
 export { renderToDos };

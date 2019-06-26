@@ -1,5 +1,10 @@
 import { addProject } from './projectFactory';
-import { addToDo, findToDo, updateStorage, deleteFromStorage } from './toDoFactory';
+import { 
+  addToDo, 
+  findToDo, 
+  updateStorage, 
+  deleteFromStorage 
+} from './toDoFactory';
 import { renderProjects } from './projects';
 import { renderToDos } from './toDos';
 import { renderToDoForm } from './toDoForm';
@@ -13,7 +18,7 @@ const formCleaner = (form) => {
 
 const deleteRendered = (parent, children) => {
   const container = document.getElementById(parent);
-  let divs = document.querySelectorAll(children);
+  const divs = document.querySelectorAll(children);
   [...divs].forEach((div) => {
     container.removeChild(div);
   });

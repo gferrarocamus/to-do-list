@@ -41,7 +41,7 @@ const renderToDoForm = () => {
   const projects = getStorage();
 
   projects.forEach((p) => {
-    let o = document.createElement('option');
+    const o = document.createElement('option');
     o.setAttribute('value', p.id);
     o.textContent = p.name;
     project.appendChild(o);
