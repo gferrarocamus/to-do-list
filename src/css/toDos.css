@@ -1,0 +1,15 @@
+.hidden {
+  display: none;
+}
+
+.inline {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.toDo {
+  border: 2px solid #DDDDDD;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}

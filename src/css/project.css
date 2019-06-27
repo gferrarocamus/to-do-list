@@ -1,0 +1,35 @@
+.project {
+  border-bottom: 1px solid #DDDDDD;
+  cursor: pointer;
+  padding: 15px 0;
+  position: relative;
+}
+
+.project h2 {
+  margin: 0;
+  position: relative;
+  display: inline-block;
+}
+
+.project:nth-last-child(2) {
+  border: none;
+}
+
+.projectForm,
+.addProjectBtn {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
+
+#addProjectBtn {
+  font-size: 24px;
+  padding: 5px 10px;
+  margin-top: 15px;
+}
+
+.active {
+  background-color: #F1F3F4;
+}
