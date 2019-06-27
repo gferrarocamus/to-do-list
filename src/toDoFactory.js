@@ -1,27 +1,24 @@
 import { getStorage, setStorage } from './storage';
 
-const toDoFactory = (id, title, check, description, priority, date) => {
-  return { 
-    id, 
-    title, 
-    check, 
-    description, 
-    priority, 
-    date 
-  };
-};
+const toDoFactory = (id, title, check, description, priority, date) => ({
+  id,
+  title,
+  check,
+  description,
+  priority,
+  date,
+});
 
 const getToDoId = () => {
   const storage = getStorage();
   if (storage === null) {
     return 1;
-  } else {
-    let count = 1;
-    storage.forEach((project) => {
-      count += project.toDos.length;
-    });
-    return count;
   }
+  let count = 1;
+  storage.forEach((project) => {
+    count += project.toDos.length;
+  });
+  return count;
 };
 
 const toggleChecked = (e) => {
@@ -86,16 +83,16 @@ const addToDo = () => {
   );
   const projectId = +form.project.value;
   const projects = getStorage();
-  const project = projects.find((p) => p.id === projectId);
+  const project = projects.find(p => p.id === projectId);
   project.toDos.push(toDo);
   setStorage(projects);
 };
 
-export { 
-  addToDo, 
-  toDoFactory, 
-  toggleChecked, 
-  findToDo, 
-  updateStorage, 
-  deleteFromStorage 
+export {
+  addToDo,
+  toDoFactory,
+  toggleChecked,
+  findToDo,
+  updateStorage,
+  deleteFromStorage,
 };

@@ -51,15 +51,15 @@ const renderToDoEditForm = (toDo, main) => {
   });
 
   const all = [
-    titleLabel, 
-    title, 
-    descriptionLabel, 
-    description, 
-    priorityLabel, 
-    priority, 
-    dateLabel, 
-    date, 
-    btn
+    titleLabel,
+    title,
+    descriptionLabel,
+    description,
+    priorityLabel,
+    priority,
+    dateLabel,
+    date,
+    btn,
   ];
   all.forEach((element) => {
     form.appendChild(element);

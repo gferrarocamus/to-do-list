@@ -1,9 +1,7 @@
 import { getStorage, setStorage } from './storage';
 import { toDoFactory } from './toDoFactory';
 
-const projectFactory = (id, name, toDos) => {
-  return { id, name, toDos };
-};
+const projectFactory = (id, name, toDos) => ({ id, name, toDos });
 
 const setDefaultProject = () => {
   const defaultToDo = toDoFactory(1, 'Sample task', false, 'Give feedback to developer', 'Low priority', '2019-12-01');

@@ -1,9 +1,9 @@
 import { getStorage } from './storage';
-import { 
-  showDetailsFromDiv, 
-  showDetailsFromTitle, 
-  editToDo, 
-  removeToDo 
+import {
+  showDetailsFromDiv,
+  showDetailsFromTitle,
+  editToDo,
+  removeToDo,
 } from './renderings';
 import { toggleChecked } from './toDoFactory';
 import './css/toDos.css';

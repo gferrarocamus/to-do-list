@@ -1,9 +1,9 @@
 import { addProject } from './projectFactory';
-import { 
-  addToDo, 
-  findToDo, 
-  updateStorage, 
-  deleteFromStorage 
+import {
+  addToDo,
+  findToDo,
+  updateStorage,
+  deleteFromStorage,
 } from './toDoFactory';
 import { renderProjects } from './projects';
 import { renderToDos } from './toDos';
@@ -103,7 +103,7 @@ const showDetailsFromDiv = (e) => {
 
 const editToDo = (e) => {
   const parent = e.target.parentNode;
-  const children = e.target.parentNode.children;
+  const { children } = e.target.parentNode;
   [...children].forEach((child) => {
     parent.removeChild(child);
   });
